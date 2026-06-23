@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -6,12 +7,12 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Container(width: 300, child: formulario())),
+      body: Center(child: Container(width: 300, child: formulario(context))),
     );
   }
 }
 
-Widget formulario() {
+Widget formulario(context) {
   TextEditingController correo = TextEditingController();
   TextEditingController contrasenia = TextEditingController();
 
@@ -26,10 +27,29 @@ Widget formulario() {
       ),
 
       FilledButton.icon(
-        onPressed: () => (),
+        onPressed: () => login(context, correo, contrasenia),
         label: Text("Login"),
         icon: Icon(Icons.login),
       ),
     ],
   );
+}
+
+Future<void> login (context, correo,  contrasenia) async {
+  try {
+  final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+    email: correo.text,
+    password: contrasenia.text
+  );
+
+  Navigator. pushNamed(context, "/guardar");
+
+} on FirebaseAuthException catch (e) {
+  if (e.code == 'user-not-found') {
+    print('No user found for that email.');
+  } else if (e.code == 'wrong-password') {
+    print('Wrong password provided for that user.');
+    
+  }
+}
 }
