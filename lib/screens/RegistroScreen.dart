@@ -23,9 +23,6 @@ Widget formulario() {
     children: [
       TextField(
         controller: correo,
-        
-
-
 
         ),
       TextField(
