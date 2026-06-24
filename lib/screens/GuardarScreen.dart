@@ -23,22 +23,22 @@ Widget formulario(BuildContext context){
   TextEditingController marca = TextEditingController();
   TextEditingController precio = TextEditingController();
 
-
-  return 
-  Center(
+  return Center(
     child: Container(
       width: 350,
       child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-      TextField(controller: placa,),
-      TextField(controller:  marca,),
-      TextField(controller: precio,),
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(controller: placa),
+          TextField(controller: marca),
+          TextField(controller: precio),
 
       FilledButton(onPressed: ()=>guardar(placa, marca, precio), child: Text("Guardar")),
       ElevatedButton(onPressed: ()=> Navigator.pushNamed(context, "/leer"), child: Text("Ver datos")),
 
-    ],),),
+        ],
+      ),
+    ),
   );
 }
 

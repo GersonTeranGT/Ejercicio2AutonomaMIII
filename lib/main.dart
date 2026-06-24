@@ -30,12 +30,12 @@ class AppFire extends StatelessWidget {
       theme: ThemeData.dark(),
       initialRoute: "/guardar",
       routes: {
-        "/":(context)=> WelcomeScreen(),
-        "/login": (context)=> LoginScreen(),
-        "/registro": (context)=> RegistroScreen(),
-        "/guardar":(context)=> Guardarscreen(),
-        "/leer":(context)=> LeerScreen(),
-        "/detalles":(context)=> DetallesScreen(),
+        "/": (context) => WelcomeScreen(),
+        "/login": (context) => LoginScreen(),
+        "/registro": (context) => RegistroScreen(),
+        "/guardar": (context) => Guardarscreen(),
+        "/leer": (context) => LeerScreen(),
+        "/detalles": (context) => DetallesScreen(),
       },
     );
   }
