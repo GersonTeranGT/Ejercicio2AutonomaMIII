@@ -36,7 +36,7 @@ Widget formulario(context) {
   );
 }
 
-//funcion registro
+//funcion registro supabase
 Future<void> registro(context, correo, contrasenia) async {
   final AuthResponse res = await supabase.auth.signUp(
     email: correo.text,
