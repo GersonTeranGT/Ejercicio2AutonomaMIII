@@ -1,3 +1,4 @@
+import 'package:app_12/main.dart';
 import 'package:flutter/material.dart';
 
 class Guardarscreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class Guardarscreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
 
-      body: formulario(),
+      body: formulario(context),
 
     );
   }
@@ -16,7 +17,7 @@ class Guardarscreen extends StatelessWidget {
 
 //id, nombre, placa color y marca
 
-Widget formulario(){
+Widget formulario(BuildContext context){
 
   TextEditingController placa = TextEditingController();
   TextEditingController marca = TextEditingController();
@@ -34,8 +35,21 @@ Widget formulario(){
       TextField(controller:  marca,),
       TextField(controller: precio,),
 
-      FilledButton(onPressed: ()=>(), child: Text("Guardar")),
+      FilledButton(onPressed: ()=>guardar(placa, marca, precio), child: Text("Guardar")),
+      ElevatedButton(onPressed: ()=> Navigator.pushNamed(context, "/leer"), child: Text("Ver datos")),
 
     ],),),
   );
+}
+
+Future<void> guardar (placa, marca, precio) async {
+  await supabase
+    .from('autos')
+    .insert(
+      {
+      'placa': placa.text, 
+      'marca': marca.text,
+      'precio': double.parse(precio.text)
+      }
+      );
 }

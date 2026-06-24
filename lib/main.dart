@@ -5,8 +5,19 @@ import 'package:app_12/screens/LoginScreen.dart';
 import 'package:app_12/screens/RegistroScreen.dart';
 import 'package:app_12/screens/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+
+//SUPABASE
+final supabase = Supabase.instance.client;
+Future<void> main() async {
+
+
+  await Supabase.initialize(
+    url: 'https://iqitrzboycbasqnszwdi.supabase.co',
+    publishableKey: 'sb_publishable_c4D2QyXFBGcJvspUWWXV8A_SofGZgqG',
+  );
+
   runApp(const AppFire());
 }
 
